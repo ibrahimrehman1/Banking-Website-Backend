@@ -22,12 +22,10 @@ app.post("/transfers", postTransfers);
 app.put("/updatecustomers", putCustomers)
 
 
-if (process.env.NODE_ENV === "production"){
 
-    app.use(express.static("banking-website/build"))
-    app.get("*", (req, res)=>{
-        res.sendFile(path.resolve(__dirname, "banking-website", "build", "index.html"))
-    })
-}
+app.get("/", (req, res)=>{
+    res.send("Hello Visitors!")
+})
+
 
 app.listen(PORT, ()=>console.log(`Server running on PORT ${PORT}`))
